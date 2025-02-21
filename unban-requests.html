@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+        <title>Unban Requests</title>
+</head>
+<body>
+    <img src="assets/img/logo/Comp 1_3.gif" alt="Streets of Compton Logo" class="logo small-logo">
+    <a href="https://paypal.me/ukendzsupport" class="purchase-button">Click Me to Purchase!</a>
+    <button class="menu-toggle">☰ Menu</button>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="gang-packages.html">Gang Packages</a>
+        <a href="business.html">Business</a>
+        <a href="one-of-one.html">1 of 1s</a>
+        <a href="extras.html">Extras</a>
+        <a href="cheapest.html">Cheapest</a>
+        <a href="tos.html">TOS</a>
+        <a href="unban-requests.html" class="active">Unban Requests</a>
+        <a href="server-issues.html" class="active">Report Server Issues</a>
+    </nav>
+    
+    <div class="store-container">
+        <h1>Unban Requests</h1>
+    
+        <div class="form-container"> <!-- Outer Box -->
+            <form id="unban-form" class="unban-form">
+                
+                <div class="question-box box-blue">
+                    <label for="ban-id">Ban ID:</label>
+                    <input type="text" id="ban-id" name="ban-id" pattern="BSWG-[A-Z0-9]{4}" required>
+                </div>
+    
+                <div class="question-box box-green">
+                    <label for="discord-id">Discord ID:</label>
+                    <input type="text" id="discord-id" name="discord-id" required>
+                </div>
+    
+                <div class="question-box box-red">
+                    <label for="reason">Reason for Unban Request:</label>
+                    <textarea id="reason" name="reason" rows="5" required></textarea>
+                </div>
+    
+                <button type="submit" class="custom-submit">Submit Issue</button>
+
+            </form>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Streets of Compton. All rights reserved.</p>
+        <a href="tos.html">Terms of Service</a>
+    </footer>
+
+    <script>
+        document.getElementById('unban-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const webhookURL = 'https://discord.com/api/webhooks/1342335561062551562/72uAdphx0TH4OYfDhja883yTS55hzuv5fW82YEQWsx10tfG7zjyy5JC9X0H36mGq5T3K';
+            const banId = document.getElementById('ban-id').value;
+            const discordId = document.getElementById('discord-id').value;
+            const reason = document.getElementById('reason').value;
+            
+            const payload = {
+                content: `**New Unban Request**\n**Ban ID:** ${banId}\n**Discord ID:** ${discordId}\n**Reason:** ${reason}`
+            };
+            
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            }).then(response => {
+                if (response.ok) {
+                    alert('Unban request submitted successfully!');
+                    document.getElementById('unban-form').reset();
+                } else {
+                    alert('Failed to submit the unban request.');
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+                alert('Failed to submit the unban request.');
+            });
+        });
+    </script>
+</body>
+</html>

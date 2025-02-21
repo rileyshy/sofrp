@@ -1,0 +1,111 @@
+/* Mobile-Friendly Styles */
+@media (max-width: 768px) {
+    
+    /* General Body Styling */
+    body {
+        font-size: 16px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    /* Logo Adjustments */
+    .logo {
+        width: 80px;
+    }
+
+    /* Adjust Store Container */
+    .store-container {
+        padding: 15px;
+        width: 95%;
+        margin: auto;
+    }
+
+    /* Mobile Form Styles */
+    .form-container {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    .question-box {
+        max-width: 100%;
+    }
+
+    /* Buttons */
+    .custom-submit {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+    }
+
+    /* Success Box */
+    .success-box {
+        max-width: 90%;
+    }
+
+    /* =================== */
+    /* 🚀 MOBILE NAV MENU */
+    /* =================== */
+
+    /* Hide Default Navigation */
+    nav {
+        display: none;
+    }
+
+/* Mobile Menu (Hidden on Desktop) */
+.menu-toggle {
+    display: none; /* Hide by default */
+}
+
+/* Hide mobile menu and button by default */
+.menu-toggle,
+.mobile-menu {
+    display: none;
+}
+
+/* Mobile-Specific Styles */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show menu button only on mobile */
+        background: var(--container-bg-color);
+        color: white;
+        border: none;
+        padding: 12px;
+        font-size: 1.5em;
+        text-align: center;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    /* Mobile Menu Styling */
+    .mobile-menu {
+        display: none;
+        background: var(--container-bg-color);
+        position: absolute;
+        width: 100%;
+        top: 50px;
+        left: 0;
+        text-align: center;
+        padding: 15px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .mobile-menu a {
+        display: block;
+        padding: 10px;
+        color: white;
+        text-decoration: none;
+        font-size: 1.2em;
+        border-bottom: 1px solid #444;
+    }
+
+    .mobile-menu a:last-child {
+        border-bottom: none;
+    }
+
+    /* Show Mobile Menu When Activated */
+    .mobile-menu.show {
+        display: block;
+    }
+}
+
+}

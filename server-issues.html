@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Report Server Issues</title>
+</head>
+<body>
+    <img src="assets/img/logo/Comp 1_3.gif" alt="Streets of Compton Logo" class="logo small-logo">
+    <a href="https://paypal.me/ukendzsupport" class="purchase-button">Click Me to Purchase!</a>
+    <button class="menu-toggle">☰ Menu</button>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="gang-packages.html">Gang Packages</a>
+        <a href="business.html">Business</a>
+        <a href="one-of-one.html">1 of 1s</a>
+        <a href="extras.html">Extras</a>
+        <a href="cheapest.html">Cheapest</a>
+        <a href="tos.html">TOS</a>
+        <a href="unban-requests.html" class="active">Unban Requests</a>
+        <a href="server-issues.html" class="active">Report Server Issues</a>    </nav>
+    
+        <div class="store-container">
+            <h1>Report Server Issues</h1>
+        
+            <div class="form-container">
+                <form id="issue-form" class="issue-form">
+                    
+                    <div class="question-box box-lightgray">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+        
+                    <div class="question-box box-lightgray">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+        
+                    <div class="question-box box-lightgray">
+                        <label for="issue">Describe the Issue:</label>
+                        <textarea id="issue" name="issue" rows="5" required></textarea>
+                    </div>
+        
+                    <button type="submit" class="custom-submit">Submit Issue</button>
+                </form>
+
+                </div>
+            </div>
+        </div>
+        
+         
+    <footer>
+        <p>&copy; 2025 Streets of Compton. All rights reserved.</p>
+        <a href="tos.html">Terms of Service</a>
+    </footer>
+
+    <script>
+        document.getElementById('issue-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const webhookURL = 'https://discord.com/api/webhooks/1342335881742254102/uuvnujRc0zERP59ZUgpA-5KRUBOeqqSkVCWhOWlYOvHEcPZbz2_pIh4nuvcAoRJmg8VA';
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const issue = document.getElementById('issue').value;
+            
+            const payload = {
+                content: `**New Server Issue Reported**\n**Username:** ${username}\n**Email:** ${email}\n**Issue:** ${issue}`
+            };
+            
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            }).then(response => {
+                if (response.ok) {
+                    alert('Issue reported successfully!');
+                    document.getElementById('issue-form').reset();
+                } else {
+                    alert('Failed to report the issue.');
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+                alert('Failed to report the issue.');
+            });
+        });
+    </script>
+</body>
+</html>
